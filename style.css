@@ -1,0 +1,156 @@
+body {
+ 
+  margin: 0;
+  padding: 0;
+  
+}
+
+nav div {
+  display: flex;
+  gap: 25px; /* Adds spacing between links */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+nav div a {
+  text-decoration: none;
+  color: black; /* Adjust color as needed */
+  font-weight: bold;
+  text-align: center;
+}
+nav div a:hover {
+  color: red; 
+}
+header {
+  position: relative; 
+  background-color: #0b76e1; 
+  padding: 0; 
+  height: 100px; 
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px; /* Adjust logo size */
+  height: 100px;
+  object-fit: cover;
+  background-color: #0b76e1; /* Set blue background color */
+ 
+}
+
+.button{
+  position: absolute;
+  top: 50px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  padding: 10px 20px;
+  width: 100px; /* Set a fixed width for the button */
+  height: 30px;;
+}
+.button1{
+  position: absolute;
+  top: 50px; /* Adjust as needed */
+  right: 100px; /* Adjust as needed */
+  padding: 10px 20px;
+  width: 100px; /* Set a fixed width for the button */
+  height: 30px;
+}
+h1{
+  font-size:50px; /* Adjust font size as needed */
+  margin: 0; /* Remove default margin */
+}
+.section{
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  
+}
+h1 span{
+  display: block;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Stack content vertically */
+    height: auto; /* Allow height to adjust */
+  }
+
+  .logo {
+    position: static; /* Remove absolute positioning */
+    margin-bottom: 10px; /* Add spacing below the logo */
+    
+  }
+  
+
+  nav div {
+    justify-content: center; /* Center navigation links */
+    gap: 15px; /* Reduce spacing between links */
+  }
+
+  .button, .button1 {
+    position: static; /* Remove absolute positioning */
+    margin-top: 10px; /* Add spacing above buttons */
+  }
+
+  h1 {
+    font-size: 30px; /* Reduce font size for smaller screens */
+  }
+
+  .section {
+    flex-direction: column; /* Stack content vertically */
+    padding: 20px; /* Add padding for better spacing */
+  }
+
+  .image-container img {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+
+@media (max-width: 480px) {
+  nav div {
+    flex-direction: column; /* Stack navigation links vertically */
+    gap: 10px; /* Reduce spacing further */
+  }
+
+  h1 {
+    font-size: 24px; /* Further reduce font size */
+  }
+}
+.shop-now{
+ 
+  padding: 10px 20px; /* Add padding for button appearance */
+  background-color: #0b76e1; /* Button background color */
+  border-radius: 15px; /* Rounded corners */
+  text-decoration: none;
+  font-weight: bold; 
+}
+/* Footer styles */
+footer {
+  background-color: #0b76e1; /* Match header color */
+  color: white;
+  text-align: center;
+  height: 28vh; /* Keep the height as it is */
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  margin-top: 20px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links a {
+  color: black;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
