@@ -1,7 +1,7 @@
 // Dashboard.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Dashboard.css'; // if using separate file, or just rely on App.css
+import './Dashboard.css'; // Ensure this file contains styles for the cards
 
 export default function Dashboard() {
   return (
@@ -20,11 +20,24 @@ export default function Dashboard() {
 
       <div className="main">
         <h2>Dashboard Overview</h2>
-        <div className="card">
-          <p>This is a summary card.</p>
-        </div>
-        <div className="card">
-          <p>Another card with info.</p>
+        <div className="cards-container">
+          {/* Customers Card */}
+          <div className="card card-customers">
+            <h3>Customers</h3>
+            <p>1,234</p>
+          </div>
+
+          {/* Orders Card */}
+          <div className="card card-orders">
+            <h3>Orders</h3>
+            <p>567</p>
+          </div>
+
+          {/* Products Card */}
+          <div className="card card-products">
+            <h3>Products</h3>
+            <p>89</p>
+          </div>
         </div>
       </div>
     </div>
