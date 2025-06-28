@@ -1,23 +1,38 @@
 // Dashboard.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Dashboard.css'; // Ensure this file contains styles for the cards
+import { FaTachometerAlt, FaBoxOpen, FaClipboardList, FaFileInvoice, FaCog, FaSignOutAlt } from 'react-icons/fa'; // Import icons
+import './Dashboard.css';
 
 export default function Dashboard() {
   return (
-    <div>
+    <div className="dashboard-container">
+      {/* Sidebar */}
       <div className="sidebar">
         <h1>SmartBasket</h1>
         <nav>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/products">Products</Link>
-          <Link to="/orders">Orders</Link>
-          <Link to="/invoices">Invoices</Link>
-          <Link to="/settings">Settings</Link>
-          <Link to="/logout">Logout</Link>
+          <Link to="/dashboard">
+            <FaTachometerAlt className="icon" /> Dashboard
+          </Link>
+          <Link to="/products">
+            <FaBoxOpen className="icon" /> Products
+          </Link>
+          <Link to="/orders">
+            <FaClipboardList className="icon" /> Orders
+          </Link>
+          <Link to="/invoices">
+            <FaFileInvoice className="icon" /> Invoices
+          </Link>
+          <Link to="/settings">
+            <FaCog className="icon" /> Settings
+          </Link>
+          <Link to="/logout">
+            <FaSignOutAlt className="icon" /> Logout
+          </Link>
         </nav>
       </div>
 
+      {/* Main Content */}
       <div className="main">
         <h2>Dashboard Overview</h2>
         <div className="cards-container">

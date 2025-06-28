@@ -1,0 +1,359 @@
+body {
+ 
+  margin: 0;
+  padding: 0;
+  
+}
+
+nav div {
+  display: flex;
+  gap: 25px; /* Adds spacing between links */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+nav div a {
+  text-decoration: none;
+  color: black; /* Adjust color as needed */
+  font-weight: bold;
+  text-align: center;
+}
+nav div a:hover {
+  color: red; 
+}
+header {
+  position: relative; 
+  background-color: #0b76e1; 
+  padding: 0; 
+  height: 100px; 
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px; /* Adjust logo size */
+  height: 100px;
+  object-fit: cover;
+  background-color: #0b76e1; /* Set blue background color */
+ 
+}
+
+.button{
+  position: absolute;
+  top: 50px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  padding: 10px 20px;
+  width: 100px; /* Set a fixed width for the button */
+  height: 30px;;
+}
+.button1{
+  position: absolute;
+  top: 50px; /* Adjust as needed */
+  right: 100px; /* Adjust as needed */
+  padding: 10px 20px;
+  width: 100px; /* Set a fixed width for the button */
+  height: 30px;
+}
+h1{
+  font-size:50px; /* Adjust font size as needed */
+  margin: 0; /* Remove default margin */
+}
+.section{
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  gap: 50px;
+  flex-wrap: wrap; 
+  
+  
+  
+}
+.about{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+h1 span{
+  display: block;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Stack content vertically */
+    height: auto; /* Allow height to adjust */
+  }
+
+  .logo {
+    position: static; /* Remove absolute positioning */
+    margin-bottom: 10px; /* Add spacing below the logo */
+    
+  }
+  
+
+  nav div {
+    justify-content: center; /* Center navigation links */
+    gap: 15px; /* Reduce spacing between links */
+  }
+
+  .button, .button1 {
+    position: static; /* Remove absolute positioning */
+    margin-top: 10px; /* Add spacing above buttons */
+  }
+
+  h1 {
+    font-size: 30px; /* Reduce font size for smaller screens */
+  }
+
+  .section {
+    flex-direction: column; /* Stack content vertically */
+    padding: 20px; /* Add padding for better spacing */
+  }
+
+  .image-container img {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+
+@media (max-width: 480px) {
+  nav div {
+    flex-direction: column; /* Stack navigation links vertically */
+    gap: 10px; /* Reduce spacing further */
+  }
+
+  h1 {
+    font-size: 24px; /* Further reduce font size */
+  }
+}
+.shop-now{
+ 
+  padding: 10px 20px; /* Add padding for button appearance */
+  background-color: #0b76e1; /* Button background color */
+  border-radius: 15px; /* Rounded corners */
+  text-decoration: none;
+  font-weight: bold; 
+}
+/* Footer styles */
+footer {
+  background-color: #0b76e1; /* Match header color */
+  color: white;
+  text-align: center;
+  height: 28vh; /* Keep the height as it is */
+  width: 100%; /* Full width */
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  margin-top: 20px;
+  position: fixed;
+  bottom: 0; /* Stick to the bottom of the page */
+  left: 0; 
+    
+
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links a {
+  color: black;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+.avatar-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 300px;
+  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.3s ease;
+  margin: 10px 0;
+}
+
+.avatar-card:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.avatar-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 16px;
+  border: 2px solid #007bff; /* Blue border for a professional look */
+}
+
+.avatar-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.avatar-role {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #777;
+}
+.avatar{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Products Section */
+.products-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.products-section h1 {
+  font-size: 36px;
+  color: #0b76e1;
+  margin-bottom: 20px;
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/*.product-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}*/
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.product-card p {
+  font-size: 16px;
+  color: #777;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Sign-Up Section */
+.signup-section {
+  padding: 10px;
+  max-width: 400px;
+  margin: 10px auto;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+}
+
+.signup-section h1 {
+  font-size: 20px;
+  color: #0b76e1;
+  margin-bottom: 10px;
+}
+
+.signup-form .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.signup-form label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.signup-form input {
+  width: 80%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup-button {
+  background-color: #0b76e1;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.signup-button:hover {
+  background-color: #005bb5;
+}
+
+.login-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #0b76e1;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+/* Login Section */
+.login-section {
+  padding: 40px;
+  max-width: 400px;
+  margin: 50px auto;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
