@@ -1,3 +1,3 @@
-<?php  
-    echo "Signup successful for $firstName $lastName!";
+<?php
+echo "PHP is working!";
 ?>

@@ -2,9 +2,9 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
-?>
 
-<?php
+
+
 
 $host = 'localhost'; 
 $db = 'inventory_management'; 

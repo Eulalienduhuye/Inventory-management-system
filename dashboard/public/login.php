@@ -3,9 +3,9 @@ session_start();
 
 // Database connection
 $servername = "localhost";
-$username = "root"; // Replace with your database username
-$password = ""; // Replace with your database password
-$dbname = "smartbasket"; // Replace with your database name
+$username = "root"; 
+$password = ""; 
+$dbname = "inventory_management"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Set session variables
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['first_name'];
+            $_SESSION['success_message'] = "Welcome, " . $user['first_name'] . "! You have successfully logged in.";
 
             // Redirect to the React dashboard
             header("Location: http://localhost:3000/dashboard");
