@@ -19,6 +19,7 @@
   flex: 1;
   min-width: 200px;
   text-align: center;
+  position: relative; /* Set relative positioning for the card */
 }
 
 .card h3 {
@@ -29,6 +30,16 @@
 .card p {
   margin: 5px 0;
   font-size: 1em;
+}
+
+
+.card-icon {
+  position: absolute; 
+  top: 10px; 
+  right: 10px; 
+  font-size: 30px; 
+  color: white; 
+  opacity: 0.9; 
 }
 
 /* Sidebar */
@@ -95,7 +106,7 @@
   margin-bottom: 20px;
 }
 
-/* Stats Section */
+
 .stats-container {
   display: flex;
   gap: 20px;
@@ -130,49 +141,7 @@
   color: white;
 }
 
-
-/* Activities Section */
-.activities-container {
-  display: flex;
-  gap: 40px;
-}
-
-.top-products,
-.other-activities {
-  flex: 1;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.product-item,
-.activity-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.product-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  margin-right: 15px;
-  object-fit: cover;
-}
-
-.product-price,
-.activity-time {
-  font-weight: bold;
-}
-
-.activity-icon {
-  font-size: 24px;
-  margin-right: 10px;
-}
-
-/* Specific Card Colors */
+ /*Specific Card Colors */
 .card-customers {
   background-color: #4caf50; 
 }
@@ -184,8 +153,15 @@
   background-color: #ff9800;
 }
 .card-revenue {
-  background-color: #f44336; 
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  text-align: center;
 }
+
 .card-sales{
   background-color: #9c27b0; 
 }
@@ -195,8 +171,8 @@
   border: 2px solid #4caf50;
   padding: 20px;
   margin-top: 70px;
-  flex: 1 1 100%; 
-  margin-right: 120px;
+  flex: 1 1 100%; /* Make the card take the full width */
+  margin-right: 10px;
 }
 
 .top-selling-table {
@@ -234,4 +210,41 @@
 
 .product-details p {
   margin: 5px 0;
+}
+
+/* Flex container for Revenue and Top Selling Products */
+.revenue-top-selling-container {
+  display: flex; /* Use Flexbox to align items horizontally */
+  gap: 20px; /* Add space between the cards */
+  flex-wrap: nowrap; /* Prevent wrapping to the next row */
+  margin-top: 20px;
+  width: 200px;
+}
+
+/* Revenue Card */
+.card-revenue {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Allow the card to grow and shrink */
+  min-width: 600px; /* Minimum width for the card */
+  height: 500px;
+  text-align: center;
+  margin-right: 50px;
+
+
+}
+
+/* Top Selling Products Card */
+.card-top-selling {
+  background-color: #f9f9f9;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Make this card slightly larger */
+  min-width: 500px; /* Minimum width for the card */
+  margin-right: 50px;
 }

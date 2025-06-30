@@ -1,7 +1,8 @@
 // Dashboard.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaTachometerAlt, FaBoxOpen, FaClipboardList, FaFileInvoice, FaCog, FaSignOutAlt } from 'react-icons/fa'; // Import icons
+import { FaTachometerAlt, FaBoxOpen, FaClipboardList, FaFileInvoice, FaSignOutAlt, FaUsers, FaShoppingCart, FaBoxes } from 'react-icons/fa';
+import RevenueChart from './RevenueChart'; // Import the RevenueChart component
 import './Dashboard.css';
 
 export default function Dashboard() {
@@ -31,12 +32,10 @@ export default function Dashboard() {
           <Link to="/orders">
             <FaClipboardList className="icon" /> Orders
           </Link>
-          <Link to="/invoices">
-            <FaFileInvoice className="icon" /> Invoices
+          <Link to="/customers">
+            <FaFileInvoice className="icon" /> Customers
           </Link>
-          <Link to="/settings">
-            <FaCog className="icon" /> Settings
-          </Link>
+          
           <Link to="/logout">
             <FaSignOutAlt className="icon" /> Logout
           </Link>
@@ -49,48 +48,60 @@ export default function Dashboard() {
         <div className="cards-container">
           {/* Customers Card */}
           <div className="card card-customers">
+            <FaUsers className="card-icon" />
             <h3> Total Customers</h3>
             <p>1,234</p>
           </div>
 
           {/* Orders Card */}
           <div className="card card-orders">
+            <FaShoppingCart className="card-icon" />
             <h3>Total Orders</h3>
             <p>567</p>
           </div>
 
           {/* Products Card */}
           <div className="card card-products">
+            <FaBoxes className="card-icon" />
             <h3>Total Products</h3>
             <p>89</p>
           </div>
         </div>
 
-        {/* Top Selling Products Card */}
-        <div className="card card-top-selling">
-          <h3>Top Selling Products</h3>
-          <table className="top-selling-table">
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {topSellingProducts.map((product, index) => (
-                <tr key={index}>
-                  <td className="product-info">
-                    <img src={product.image} alt={product.name} className="product-image" />
-                    <span>{product.name}</span>
-                  </td>
-                  <td className="product-details">
-                    <p>Price: {product.price}</p>
-                    <p>Sold: {product.quantitySold}</p>
-                  </td>
+        {/* Revenue and Top Selling Products */}
+        <div className="revenue-top-selling-container">
+          {/* Revenue Card */}
+          <div className="card card-revenue">
+            <h3>Revenue Earned (Rwf)</h3>
+            <RevenueChart />
+          </div>
+
+          {/* Top Selling Products Card */}
+          <div className="card card-top-selling">
+            <h3>Top Selling Products</h3>
+            <table className="top-selling-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Details</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {topSellingProducts.map((product, index) => (
+                  <tr key={index}>
+                    <td className="product-info">
+                      <img src={product.image} alt={product.name} className="product-image" />
+                      <span>{product.name}</span>
+                    </td>
+                    <td className="product-details">
+                      <p>Price: {product.price}</p>
+                      <p>Sold: {product.quantitySold}</p>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

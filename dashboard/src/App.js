@@ -4,10 +4,8 @@ import './App.css';
 import Dashboard from './components/Dashboard';
 import Products from './components/Products';
 import Orders from './components/Orders';
-import Invoices from './components/Invoices';
 import Customers from './components/Customers';
 import Logout from './components/Logout';
-import ProductCard from './components/ProductCard';
 
 function App() {
   return (
@@ -18,10 +16,9 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/orders" element={<Orders />} />
         
-        <Route path="/invoices" element={<Invoices />} />
         <Route path="/Customers" element={<Customers />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/product-card" element={<ProductCard />} />
+        
         
         {/* Catch-all route for 404 */}
         <Route path="*" element={<div>404 - Page Not Found</div>} />

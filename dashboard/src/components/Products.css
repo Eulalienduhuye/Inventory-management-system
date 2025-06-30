@@ -45,11 +45,13 @@
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
+
 }
 
 .products-table th {
   background-color: #f4f4f4;
   font-weight: bold;
+  color: black
 }
 
 .products-table tr:nth-child(even) {

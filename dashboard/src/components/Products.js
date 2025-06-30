@@ -1,136 +1,131 @@
-// Products.js
-import React, { useState } from 'react';
-import './Products.css'; // Optional: Add styles for the page
+import React, { useEffect, useState } from 'react';
+import './Products.css';
 
 export default function Products() {
-  const [products, setProducts] = useState([
-    { id: 1, name: 'Apple', price: 1.5, quantity: 50 },
-    { id: 2, name: 'Banana', price: 0.5, quantity: 100 },
-    { id: 3, name: 'Orange', price: 1.0, quantity: 75 },
-  ]);
-
+  const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({ name: '', price: '', quantity: '' });
-  const [editingProduct, setEditingProduct] = useState(null);
+  const [editProduct, setEditProduct] = useState(null);
+  const endpoint = 'http://localhost/inventory%20management1/Inventory-management-system/dashboard/public/product.php';
 
-  // Add a new product
-  const handleAddProduct = () => {
-    if (newProduct.name && newProduct.price && newProduct.quantity) {
-      setProducts([
-        ...products,
-        { id: products.length + 1, ...newProduct, price: parseFloat(newProduct.price), quantity: parseInt(newProduct.quantity) },
-      ]);
-      setNewProduct({ name: '', price: '', quantity: '' });
-    }
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = () => {
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(data => {
+        console.log("Fetched products:", data);
+        setProducts(data);
+      })
+      .catch(err => console.error("Fetch error:", err));
   };
 
-  // Delete a product
-  const handleDeleteProduct = (id) => {
-    setProducts(products.filter((product) => product.id !== id));
+  const handleAdd = () => {
+    fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newProduct)
+    })
+      .then(res => res.json())
+      .then(() => {
+        setNewProduct({ name: '', price: '', quantity: '' });
+        fetchProducts();
+      })
+      .catch(err => console.error("Add error:", err));
   };
 
-  // Update a product
-  const handleUpdateProduct = () => {
-    setProducts(
-      products.map((product) =>
-        product.id === editingProduct.id ? editingProduct : product
-      )
-    );
-    setEditingProduct(null);
+  const handleUpdate = () => {
+    fetch(endpoint, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(editProduct)
+    })
+      .then(res => res.json())
+      .then(() => {
+        setEditProduct(null);
+        fetchProducts();
+      })
+      .catch(err => console.error("Update error:", err));
+  };
+
+  const handleDelete = (id) => {
+    fetch(`${endpoint}?id=${id}`, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(() => fetchProducts())
+      .catch(err => console.error("Delete error:", err));
   };
 
   return (
-    <div className="products-page">
-      <h2>Products Page</h2>
-      <p>Here you can manage all your products.</p>
+    <div>
+      <h2>Product List</h2>
 
-      {/* Add Product Form */}
-      <div className="add-product-form">
+      {/* Add New Product */}
+      <div>
         <h3>Add Product</h3>
-        <input
-          type="text"
-          placeholder="Product Name"
-          value={newProduct.name}
-          onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
-        />
-        <input
-          type="number"
-          placeholder="Price"
-          value={newProduct.price}
-          onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
-        />
-        <input
-          type="number"
-          placeholder="Quantity"
-          value={newProduct.quantity}
-          onChange={(e) => setNewProduct({ ...newProduct, quantity: e.target.value })}
-        />
-        <button onClick={handleAddProduct}>Add Product</button>
+        <input placeholder="Name" value={newProduct.name} onChange={e => setNewProduct({ ...newProduct, name: e.target.value })} />
+        <input placeholder="Price" type="number" value={newProduct.price} onChange={e => setNewProduct({ ...newProduct, price: parseFloat(e.target.value) })} />
+        <input placeholder="Quantity" type="number" value={newProduct.quantity} onChange={e => setNewProduct({ ...newProduct, quantity: parseInt(e.target.value) })} />
+        <button onClick={handleAdd}>Add</button>
       </div>
 
       {/* Products Table */}
-      <table className="products-table">
+      <table border="1" style={{ width: '100%', marginTop: '20px' }}>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Actions</th>
+            <th style={{ color: 'black' }}>ID</th>
+            <th style={{ color: 'black' }}>Name</th>
+            <th style={{ color: 'black' }}>Price</th>
+            <th style={{ color: 'black' }}>Quantity</th>
+            <th style={{ color: 'black' }}>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>{product.id}</td>
-              <td>
-                {editingProduct && editingProduct.id === product.id ? (
-                  <input
-                    type="text"
-                    value={editingProduct.name}
-                    onChange={(e) =>
-                      setEditingProduct({ ...editingProduct, name: e.target.value })
-                    }
-                  />
-                ) : (
-                  product.name
-                )}
-              </td>
-              <td>
-                {editingProduct && editingProduct.id === product.id ? (
-                  <input
-                    type="number"
-                    value={editingProduct.price}
-                    onChange={(e) =>
-                      setEditingProduct({ ...editingProduct, price: parseFloat(e.target.value) })
-                    }
-                  />
-                ) : (
-                  `$${product.price.toFixed(2)}`
-                )}
-              </td>
-              <td>
-                {editingProduct && editingProduct.id === product.id ? (
-                  <input
-                    type="number"
-                    value={editingProduct.quantity}
-                    onChange={(e) =>
-                      setEditingProduct({ ...editingProduct, quantity: parseInt(e.target.value) })
-                    }
-                  />
-                ) : (
-                  product.quantity
-                )}
-              </td>
-              <td>
-                {editingProduct && editingProduct.id === product.id ? (
-                  <button onClick={handleUpdateProduct}>Save</button>
-                ) : (
-                  <button onClick={() => setEditingProduct(product)}>Edit</button>
-                )}
-                <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
+          {products.length === 0 ? (
+            <tr><td colSpan="5">No products available</td></tr>
+          ) : (
+            products.map(prod => (
+              <tr key={prod.id}>
+                <td>{prod.id}</td>
+                <td>
+                  {editProduct?.id === prod.id ? (
+                    <input value={editProduct.name} onChange={e => setEditProduct({ ...editProduct, name: e.target.value })} />
+                  ) : (
+                    prod.name
+                  )}
+                </td>
+                <td>
+                  {editProduct?.id === prod.id ? (
+                    <input value={editProduct.price} type="number" onChange={e => setEditProduct({ ...editProduct, price: parseFloat(e.target.value) })} />
+                  ) : (
+                    prod.price
+                  )}
+                </td>
+                <td>
+                  {editProduct?.id === prod.id ? (
+                    <input value={editProduct.quantity} type="number" onChange={e => setEditProduct({ ...editProduct, quantity: parseInt(e.target.value) })} />
+                  ) : (
+                    prod.quantity
+                  )}
+                </td>
+                <td>
+                  {editProduct?.id === prod.id ? (
+                    <>
+                      <button onClick={handleUpdate}>Save</button>
+                      <button onClick={() => setEditProduct(null)}>Cancel</button>
+                    </>
+                  ) : (
+                    <>
+                      <button onClick={() => setEditProduct(prod)}>Edit</button>
+                      <button onClick={() => handleDelete(prod.id)}>Delete</button>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
